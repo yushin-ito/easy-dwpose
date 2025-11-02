@@ -16,3 +16,6 @@ dependencies = [
     "torch",
     "tqdm",
 ]
+
+[tool.setuptools.packages.find]
+include = ["easy_dwpose*"]
