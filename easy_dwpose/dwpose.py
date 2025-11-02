@@ -12,7 +12,7 @@ from easy_dwpose.draw import draw_openpose
 
 
 class DWposeDetector:
-    def __init__(self, device: str = "сpu"):
+    def __init__(self, device: str = "cpu"):
         hf_hub_download("RedHash/DWPose", "yolox_l.onnx", local_dir="./checkpoints")
         hf_hub_download("RedHash/DWPose", "dw-ll_ucoco_384.onnx", local_dir="./checkpoints")
         self.pose_estimation = Wholebody(
