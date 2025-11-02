@@ -91,7 +91,9 @@ def draw_bodypose(canvas, candidate, subset):
             angle = math.degrees(math.atan2(X[0] - X[1], Y[0] - Y[1]))
 
             width = smart_width(length)
-            polygon = cv2.ellipse2Poly((int(mY), int(mX)), (int(length / 2), width), int(angle), 0, 360, 1)
+            polygon = cv2.ellipse2Poly(
+                (int(mY), int(mX)), (int(length / 2), width), int(angle), 0, 360, 1
+            )
             cv2.fillConvexPoly(canvas, polygon, colors[i])
 
     canvas = (canvas * 0.6).astype(np.uint8)
@@ -158,7 +160,8 @@ def draw_handpose(canvas, all_hand_peaks):
                     canvas,
                     (x1, y1),
                     (x2, y2),
-                    matplotlib.colors.hsv_to_rgb([ie / float(len(edges)), 1.0, 1.0]) * 255,
+                    matplotlib.colors.hsv_to_rgb([ie / float(len(edges)), 1.0, 1.0])
+                    * 255,
                     thickness=width,
                 )
 

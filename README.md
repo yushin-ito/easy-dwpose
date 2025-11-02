@@ -14,21 +14,21 @@ Me: <a href="https://x.com/igorfeelippov"><img alt="X account" src="https://img.
 3. Generic class to either import in Jupyter or to run on a video/images.
 4. Code that is easy to read and modify.
 5. Choose GPU for multi-gpu inference!
-6. Custom drawing functions: convenient interface for modifying *how* you draw skeletons.
+6. Custom drawing functions: convenient interface for modifying _how_ you draw skeletons.
 
 ## Installation
 
 ### PIP
 
 ```bash
-pip install easy-dwpose
+pip install easy_dwpose
 ```
 
 ### From source
 
 ```bash
-git clone git@github.com:reallyigor/easy_dwpose.git
-cd easy_dwpose
+git clone git@github.com:reallyigor/easy-dwpose.git
+cd easy-dwpose
 pip install -e .
 ```
 

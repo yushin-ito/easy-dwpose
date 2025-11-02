@@ -14,9 +14,13 @@ from easy_dwpose.draw import draw_openpose
 class DWposeDetector:
     def __init__(self, device: str = "cpu"):
         hf_hub_download("RedHash/DWPose", "yolox_l.onnx", local_dir="./checkpoints")
-        hf_hub_download("RedHash/DWPose", "dw-ll_ucoco_384.onnx", local_dir="./checkpoints")
+        hf_hub_download(
+            "RedHash/DWPose", "dw-ll_ucoco_384.onnx", local_dir="./checkpoints"
+        )
         self.pose_estimation = Wholebody(
-            device=device, model_det="checkpoints/yolox_l.onnx", model_pose="checkpoints/dw-ll_ucoco_384.onnx"
+            device=device,
+            model_det="checkpoints/yolox_l.onnx",
+            model_pose="checkpoints/dw-ll_ucoco_384.onnx",
         )
 
     def _format_pose(self, candidates, scores, width, height):
@@ -79,7 +83,9 @@ class DWposeDetector:
             return pose
 
         pose_image = draw_pose(pose, height=height, width=width, **kwargs)
-        pose_image = cv2.resize(pose_image, (original_width, original_height), cv2.INTER_LANCZOS4)
+        pose_image = cv2.resize(
+            pose_image, (original_width, original_height), cv2.INTER_LANCZOS4
+        )
 
         if output_type == "pil":
             pose_image = PIL.Image.fromarray(pose_image)

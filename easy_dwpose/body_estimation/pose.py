@@ -114,7 +114,9 @@ def postprocess(
     return np.array(all_key), np.array(all_score)
 
 
-def bbox_xyxy2cs(bbox: np.ndarray, padding: float = 1.0) -> Tuple[np.ndarray, np.ndarray]:
+def bbox_xyxy2cs(
+    bbox: np.ndarray, padding: float = 1.0
+) -> Tuple[np.ndarray, np.ndarray]:
     """Transform the bbox format from (x,y,w,h) into (center, scale)
 
     Args:
@@ -158,7 +160,11 @@ def _fix_aspect_ratio(bbox_scale: np.ndarray, aspect_ratio: float) -> np.ndarray
         np.ndarray: The reshaped image scale in (2, )
     """
     w, h = np.hsplit(bbox_scale, [1])
-    bbox_scale = np.where(w > h * aspect_ratio, np.hstack([w, w / aspect_ratio]), np.hstack([h * aspect_ratio, h]))
+    bbox_scale = np.where(
+        w > h * aspect_ratio,
+        np.hstack([w, w / aspect_ratio]),
+        np.hstack([h * aspect_ratio, h]),
+    )
     return bbox_scale
 
 
@@ -286,7 +292,9 @@ def top_down_affine(
     return img, bbox_scale
 
 
-def get_simcc_maximum(simcc_x: np.ndarray, simcc_y: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+def get_simcc_maximum(
+    simcc_x: np.ndarray, simcc_y: np.ndarray
+) -> Tuple[np.ndarray, np.ndarray]:
     """Get maximum response location and value from simcc representations.
 
     Note:
@@ -330,7 +338,9 @@ def get_simcc_maximum(simcc_x: np.ndarray, simcc_y: np.ndarray) -> Tuple[np.ndar
     return locs, vals
 
 
-def decode(simcc_x: np.ndarray, simcc_y: np.ndarray, simcc_split_ratio) -> Tuple[np.ndarray, np.ndarray]:
+def decode(
+    simcc_x: np.ndarray, simcc_y: np.ndarray, simcc_split_ratio
+) -> Tuple[np.ndarray, np.ndarray]:
     """Modulate simcc distribution with Gaussian.
 
     Args:

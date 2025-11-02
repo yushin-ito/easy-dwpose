@@ -11,7 +11,9 @@ from tqdm.auto import tqdm
 from easy_dwpose import DWposeDetector
 
 
-def load_video(input_path: str, max_video_len: Optional[int] = None) -> list[np.ndarray]:
+def load_video(
+    input_path: str, max_video_len: Optional[int] = None
+) -> list[np.ndarray]:
     cap = cv2.VideoCapture(input_path)
     if not cap.isOpened():
         raise ValueError(f"Can't open video file {input_path}")
@@ -35,7 +37,9 @@ def load_video(input_path: str, max_video_len: Optional[int] = None) -> list[np.
 
 
 def save_video(frames: list[np.ndarray], output_path: str, fps: int) -> None:
-    writer = imageio.get_writer(output_path, fps=fps, codec="libx264", output_params=["-pix_fmt", "yuv420p"])
+    writer = imageio.get_writer(
+        output_path, fps=fps, codec="libx264", output_params=["-pix_fmt", "yuv420p"]
+    )
 
     for frame in frames:
         writer.append_data(frame)
@@ -59,7 +63,9 @@ if __name__ == "__main__":
 
     result = []
     for frame in tqdm(video):
-        result.append(detector(frame, output_type="np", include_hands=True, include_face=True))
+        result.append(
+            detector(frame, output_type="np", include_hands=True, include_face=True)
+        )
 
     logger.info(f"Saving output video to {args.output_path}")
     save_video(result, args.output_path, fps)

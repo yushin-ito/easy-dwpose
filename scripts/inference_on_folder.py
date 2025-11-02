@@ -30,7 +30,9 @@ if __name__ == "__main__":
         image = cv2.imread(str(image_path))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-        result = detector(image, output_type="np", include_hands=True, include_face=True)
+        result = detector(
+            image, output_type="np", include_hands=True, include_face=True
+        )
         result = cv2.cvtColor(result, cv2.COLOR_RGB2BGR)
 
         output_path = str(image_path).replace(str(args.input), str(args.output_path))

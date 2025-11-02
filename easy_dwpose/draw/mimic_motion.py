@@ -79,8 +79,12 @@ def draw_bodypose(canvas, candidate, subset, score):
             mY = np.mean(Y)
             length = ((X[0] - X[1]) ** 2 + (Y[0] - Y[1]) ** 2) ** 0.5
             angle = math.degrees(math.atan2(X[0] - X[1], Y[0] - Y[1]))
-            polygon = cv2.ellipse2Poly((int(mY), int(mX)), (int(length / 2), stickwidth), int(angle), 0, 360, 1)
-            cv2.fillConvexPoly(canvas, polygon, alpha_blend_color(colors[i], conf[0] * conf[1]))
+            polygon = cv2.ellipse2Poly(
+                (int(mY), int(mX)), (int(length / 2), stickwidth), int(angle), 0, 360, 1
+            )
+            cv2.fillConvexPoly(
+                canvas, polygon, alpha_blend_color(colors[i], conf[0] * conf[1])
+            )
 
     canvas = (canvas * 0.6).astype(np.uint8)
 
@@ -93,7 +97,13 @@ def draw_bodypose(canvas, candidate, subset, score):
             conf = score[n][i]
             x = int(x * W)
             y = int(y * H)
-            cv2.circle(canvas, (int(x), int(y)), 4, alpha_blend_color(colors[i], conf), thickness=-1)
+            cv2.circle(
+                canvas,
+                (int(x), int(y)),
+                4,
+                alpha_blend_color(colors[i], conf),
+                thickness=-1,
+            )
 
     return canvas
 
@@ -138,7 +148,8 @@ def draw_handpose(canvas, all_hand_peaks, all_hand_scores):
                     canvas,
                     (x1, y1),
                     (x2, y2),
-                    matplotlib.colors.hsv_to_rgb([ie / float(len(edges)), 1.0, 1.0]) * score,
+                    matplotlib.colors.hsv_to_rgb([ie / float(len(edges)), 1.0, 1.0])
+                    * score,
                     thickness=2,
                 )
 

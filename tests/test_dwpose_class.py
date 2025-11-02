@@ -18,7 +18,9 @@ def test_forward():
 def test_replace_drawing_musepose():
     detector = DWposeDetector()
     input = Image.open("assets/pose.png").convert("RGB")
-    result = detector(input, output_type="pil", draw_pose=draw_pose_musepose, draw_face=False)
+    result = detector(
+        input, output_type="pil", draw_pose=draw_pose_musepose, draw_face=False
+    )
 
     return result
 
@@ -36,7 +38,11 @@ if __name__ == "__main__":
     res_test_forward.resize(SAVE_SIZE).save("test_forward.png")
 
     res_test_replace_drawing_musepose = test_replace_drawing_musepose()
-    res_test_replace_drawing_musepose.resize(SAVE_SIZE).save("test_replace_drawing_musepose.png")
+    res_test_replace_drawing_musepose.resize(SAVE_SIZE).save(
+        "test_replace_drawing_musepose.png"
+    )
 
     res_test_replace_drawing_mimic_motion = test_replace_drawing_mimic_motion()
-    res_test_replace_drawing_mimic_motion.resize(SAVE_SIZE).save("test_replace_drawing_mimic_motion.png")
+    res_test_replace_drawing_mimic_motion.resize(SAVE_SIZE).save(
+        "test_replace_drawing_mimic_motion.png"
+    )

@@ -154,7 +154,7 @@ wheels = [
 ]
 
 [[package]]
-name = "easy-dwpose"
+name = "easy_dwpose"
 version = "1.0.3"
 source = { virtual = "." }
 dependencies = [
