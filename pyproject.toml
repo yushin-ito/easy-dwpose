@@ -17,5 +17,9 @@ dependencies = [
     "tqdm",
 ]
 
-[tool.setuptools.packages.find]
-include = ["easy_dwpose*"]
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["easy_dwpose"]
