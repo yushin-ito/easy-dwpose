@@ -1,4 +1,4 @@
-# easy_dwpose
+# easy-dwpose
 
 Recently, I tried to inference the DWPose (improved OpenPose) preprocessor for [Diffusers](https://github.com/huggingface/diffusers) and was shocked by how complicated it actually is!
 So, I decided to change that!
@@ -21,7 +21,7 @@ Me: <a href="https://x.com/igorfeelippov"><img alt="X account" src="https://img.
 ### PIP
 
 ```bash
-pip install easy_dwpose
+pip install easy-dwpose
 ```
 
 ### From source
